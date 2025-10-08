@@ -1,7 +1,7 @@
 let horse;
 
 function preload() {
-  horse = loadImage('/assets/horse.gif');
+  horse = loadImage('/Assets/horse.gif');
 }
 
 function setup() {
