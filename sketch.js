@@ -32,6 +32,7 @@ function setup() {
   window.addEventListener('deviceorientation', handleOrientation);
   
   // Log device info
+  console.log("Setup complete!");
   console.log("Device: " + navigator.userAgent);
   console.log("DeviceOrientationEvent available:", typeof DeviceOrientationEvent !== 'undefined');
   console.log("Has requestPermission:", typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function');
@@ -80,6 +81,7 @@ function draw() {
     textSize(16);
     text("Tilt Y: " + deviceRotationY.toFixed(1), width/2, 50);
     text("Tilt X: " + deviceRotationX.toFixed(1), width/2, 80);
+    text("Sensors ACTIVE!", width/2, height - 50);
   } else {
     // Show instructions
     fill(0);
@@ -96,7 +98,7 @@ function draw() {
       text("✓ Tap detected! Waiting for permission...", width/2, height/2 + 60);
     }
     fill(100);
-    text("rotationY: " + deviceRotationY, width/2, height/2 + 100);
+    text("Tilt Y: " + deviceRotationY.toFixed(1), width/2, height/2 + 100);
   }
 }
 
@@ -117,27 +119,25 @@ function mousePressed() {
 
 function touchEnded() {
   console.log("touchEnded fired");
-  requestSensorPermission();
   return false;
 }
 
 function requestSensorPermission() {
-  console.log("requestSensorPermission called");
-  console.log("Touch detected! Requesting permissions...");
+  console.log("=== requestSensorPermission called ===");
   
   // Check if we're on iOS 13+
   if (typeof DeviceOrientationEvent !== 'undefined' &&
       typeof DeviceOrientationEvent.requestPermission === 'function') {
-    console.log("iOS 13+ detected - requesting permission");
+    console.log("iOS 13+ detected - requesting permission via popup");
     
     DeviceOrientationEvent.requestPermission()
       .then(response => {
         console.log("Permission response:", response);
         if (response === 'granted') {
           window.sensorsEnabled = true;
-          console.log("✓ Sensors enabled!");
+          console.log("✓✓✓ Sensors GRANTED and enabled!");
         } else {
-          console.log("✗ Permission denied");
+          console.log("✗✗✗ Permission DENIED by user");
           errorMsg = "Permission denied. Please reload and allow sensors.";
         }
       })
@@ -146,8 +146,8 @@ function requestSensorPermission() {
         errorMsg = "Error requesting permission: " + err.message;
       });
   } else {
-    // Android or older devices
-    console.log("Non-iOS 13+ device - enabling sensors directly");
+    // Android or older iOS
+    console.log("Non-iOS 13+ device - enabling sensors directly (no permission needed)");
     window.sensorsEnabled = true;
   }
 }
