@@ -53,7 +53,7 @@ function draw() {
 
   if (sensorsEnabled) {
     text("Tilt Y: " + deviceRotationY.toFixed(1), width/2, 50);
-    text("Horse should face " + (deviceRotationY < 0 ? "LEFT" : "RIGHT"), width/2, 80);
+    text("Horse is running " + (deviceRotationY < 0 ? "LEFT" : "RIGHT"), width/2, 80);
 
     if (horse) {
       push();
