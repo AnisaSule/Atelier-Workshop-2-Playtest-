@@ -92,4 +92,3 @@ function handleOrientation(event) {
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
-
