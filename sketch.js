@@ -34,3 +34,4 @@ function requestSensorPermission() {
     window.sensorsEnabled = true;
   }
 }
+
