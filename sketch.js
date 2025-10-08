@@ -15,6 +15,7 @@ function setup() {
   imageMode(CENTER);
   textAlign(CENTER, CENTER);
   angleMode(DEGREES);
+  enableGyroTap('Tap screen to enable motion sensors');
 }
 
 function draw() {
