@@ -4,6 +4,7 @@ let deviceRotationX = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  background(220);
   textAlign(CENTER, CENTER);
   textSize(24);
   text("Waiting for motion sensor permission...", width/2, height/2);
@@ -51,6 +52,3 @@ function draw() {
     text("Tap the button to enable sensors", width/2, height/2);
   }
 }
-
-
-
