@@ -18,12 +18,12 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(255);
 
   if (showIntro) {
-    fill(255);
+    fill(0);
     textSize(28);
-    text("Do you want to run away?", width/2, height/2 - 60);
+    text("Horse in Motion ", width/2, height/2 - 60);
 
     // Draw "Run Away" button
     fill(30, 144, 255);
